@@ -6,7 +6,7 @@
 
 // You can delete this file if you're not using it
 async function createBlogPostPages (graphql, actions, reporter) {
-  //const { createPage } = actions
+  const { createPage } = actions
   const result = await graphql(`
     {
       allSanityPost(filter: { slug: { current: { ne: null } }}) {
@@ -35,6 +35,11 @@ async function createBlogPostPages (graphql, actions, reporter) {
     reporter.info(`Creating blog post page: ${path}`)
 
     //TODO: call `createPage` here
+    createPage({
+      path,
+      component: require.resolve('./src/templates/blog-post.js'),
+      context: { id },
+    })
   })
 }
 
