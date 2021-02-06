@@ -5,6 +5,7 @@ export default {
   title: "Person",
   type: "document",
   icon: MdPerson,
+  liveEdit: false,
   fields: [
     {
       name: "name",
@@ -15,7 +16,8 @@ export default {
       name: "slug",
       title: "Slug",
       type: "slug",
-      description: "Akan digunakan sebagai URL yang merujuk ke artikel si penulis",
+      description:
+        "Some frontend will require a slug to be set to be able to show the person",
       options: {
         source: "name",
         maxLength: 50,
@@ -38,9 +40,15 @@ export default {
           title: "Block",
           type: "block",
           styles: [{ title: "Normal", value: "normal" }],
-          lists: []
-        }
-      ]
-    }
-  ]
-}
+          lists: [],
+        },
+      ],
+    },
+  ],
+  preview: {
+    select: {
+      title: "name",
+      media: "image",
+    },
+  },
+};
