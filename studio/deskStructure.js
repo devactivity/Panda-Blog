@@ -28,9 +28,9 @@ export default () =>
         .title("Company Info")
         .child(
           S.editor()
-            .id("companyInfo")
-            .schemaType("companyInfo")
-            .documentId("companyInfo")
+            .id("company")
+            .schemaType("company")
+            .documentId("company")
         )
         .icon(MdBusiness),
       S.listItem()
@@ -62,7 +62,7 @@ export default () =>
                 )
                 .icon(FaFile),
             ])
-        )
+        ),
       S.listItem()
         .title("People")
         .schemaType("person")
