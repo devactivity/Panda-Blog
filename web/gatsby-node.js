@@ -25,7 +25,7 @@ async function createBlogPostPages (graphql, actions, reporter) {
 
   if (result.errors) throw result.errors
 
-  const postEdges = (result.data.allSanityPost || {}) || []
+  const postEdges = (result.data.allSanityPost || {}).edges || []
 
   postEdges.forEach((edge, index) => {
     const { id, slug = {}, publishedAt } = edge.node
