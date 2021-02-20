@@ -15,7 +15,7 @@ const detailsQuery = graphql`
       title
       description
       keywords
-      writter
+      maintainer
     }
   }
 `
@@ -61,7 +61,7 @@ function SEO ({ description, lang, meta, keywords = [], title }) {
               },
               {
                 name: 'twitter:creator',
-                content: data.site.writter
+                content: data.site.maintainer
               },
               {
                 name: 'twitter:title',

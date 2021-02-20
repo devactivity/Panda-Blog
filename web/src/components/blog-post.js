@@ -31,14 +31,14 @@ function BlogPost(props) {
               )
             }
 
-            {/* show writter here*/}
+            {/* show writter here */}
 
             {
               categories && (
                 <div>
                   <h3>Categories</h3>
                   <ul>
-                    {categories.map(category => (
+                    {categories.map(catogory => (
                       <li key={category._id}>{category.title}</li>
                     ))}
                   </ul>

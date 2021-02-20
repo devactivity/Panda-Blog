@@ -1,9 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-// import error component
 // import article page 
 import SEO from '../components/seo'
-import GraphQLErrorList from '../components/GraphQLErrorList.js'
+import GraphQLErrorList from '../components/GraphQLErrorList'
 import Layout from '../components/layout'
 
 export const query = graphql`
@@ -76,12 +75,12 @@ export const query = graphql`
 
 const BlogPostTemplate = props => {
   const { data, errors } = props
-  console.log(data)
+  const post = data && data.post
 
   return (
     <Layout>
       {errors && <SEO title='GraphQL Error' />}
-      {psot && <SEO title={post.title || 'Untitled'}/>}
+      {post && <SEO title={post.title || 'Untitled'}/>}
 
       {
         errors && (
