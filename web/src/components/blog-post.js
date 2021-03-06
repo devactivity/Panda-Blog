@@ -3,7 +3,7 @@ import React from 'react'
 import { buildImageObj } from '../utils/helpers'
 import { imageUrlFor } from '../utils/image-url'
 import BodyArticle from './body-article'
-// import detail writter
+import RoleList from './RoleList'
 
 function BlogPost(props) {
   const { _rawBody, writter, categories, title, mainImage, publishedAt } = props
@@ -47,6 +47,7 @@ function BlogPost(props) {
             }
 
             {/* show writter here */}
+            {writter && <RoleList items={writter} title='Writter' />}
 
             {
               categories && (
