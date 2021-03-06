@@ -1,7 +1,8 @@
 import { format, formatDistance, differenceInDays } from 'date-fns'
 import React from 'react'
-// import function from utils
-// import body article
+import { buildImageObj } from '../utils/helpers'
+import { imageUrlFor } from '../utils/image-url'
+import BodyArticle from './body-article'
 // import detail writter
 
 function BlogPost(props) {
@@ -10,6 +11,19 @@ function BlogPost(props) {
   return (
     <article>
       {/* headline image component */}
+      {mainImage && mainImage.asset && (
+        <div>
+          <img
+            src={imageUrlFor(buildImageObj(mainImage))
+                .width(1200)
+                .height(675)
+                .fit('crop')
+                .url()
+            }
+            alt={mainImage.alt}
+          />
+        </div>
+      )}
 
       <>
         <div>
@@ -17,6 +31,7 @@ function BlogPost(props) {
             <h1>{title}</h1>
 
             {/* show body article */}
+            {_rawBody && <BodyArticle blocks={_rawBody} />}
           </div>
 
           <aside>
