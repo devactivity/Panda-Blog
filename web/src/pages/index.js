@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 
 import Layout from "../components/layout"
+import SEO from '../components/seo'
 import BlogPostList from '../components/blog-post-list'
 import GraphQLErrorList from '../components/GraphQLErrorList'
 import { mapEdgesToNodes, filterSlugs } from '../utils/helpers'
@@ -75,6 +76,7 @@ const IndexPage = ({data, errors}) =>  {
 
   return (
     <Layout>
+      <SEO title='The Panda' />
       <div>
         <h1 css={css`display:inline-block;`}>{site.description}</h1>
         <h4>{postNodes && postNodes.length} Posts</h4>

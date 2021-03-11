@@ -11,7 +11,7 @@ import { StaticQuery, graphql } from 'gatsby'
 
 const detailsQuery = graphql`
   query SEOQuery {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+    site: sanitySiteSettings {
       title
       description
       keywords
