@@ -92,3 +92,5 @@ const BlogPostTemplate = props => {
     </Layout>
   )
 }
+
+export default BlogPostTemplate

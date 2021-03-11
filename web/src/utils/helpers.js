@@ -18,4 +18,6 @@ export function buildImageObj(source) {
 
   if (source.crop) imgObj.crop = source.crop
   if (source.hotspot) imgObj.hotspot = source.hotspot
+
+  return imgObj
 }
