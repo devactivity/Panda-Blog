@@ -40,7 +40,7 @@ function RoleList({ items, title }) {
                     switch(true) {
                       case idx === 0:
                         return <span key={role}>{ucfirst(role)}</span>
-                      case idx === item.roles.lenght - 1:
+                      case idx === item.roles.length - 1:
                         return <span key={role}> & {role}</span>
 
                       default:

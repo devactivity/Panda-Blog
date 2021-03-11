@@ -1,13 +1,86 @@
 import React from "react"
+import { graphql } from 'gatsby'
+import { css } from '@emotion/react'
 
 import Layout from "../components/layout"
+import GraphQLErrorList from '../components/GraphQLErrorList'
+import { mapEdgesToNodes, filterSlugs } from '../utils/helpers'
 
-const IndexPage = () => (
-  <Layout>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-  </Layout>
-)
+export const query = graphql`
+  query IndexPageQuery {
+    site: sanitySiteSettings {
+      title
+      description
+      keywords
+    }
+
+    posts: allSanityPost(limit: 6, sort: { fields: [publishedAt], order: DESC }) {
+      edges {
+        node {
+          id
+          publishedAt
+          mainImage {
+            crop {
+              _key
+              _type
+              top
+              bottom
+              left
+              right
+            }
+            hotspot {
+              _key
+              _type
+              x
+              y
+              height
+              width
+            }
+            asset {
+              _id
+            }
+            alt
+          }
+          title
+          slug {
+            current
+          }
+          excerpt {
+            children {
+              text
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = ({data, errors}) =>  {
+  if (errors) {
+    return (
+      <Layout>
+        <GraphQLErrorList errors={errors} />
+      </Layout>
+    )
+  }
+
+  const site = (data || {}).site
+  const postNodes = (data || {}).posts ? mapEdgesToNodes(data.posts).filter(filterSlugs) : []
+
+  if (!site) {
+    throw new Error('Missing site settings. Open sanity studio.')
+  }
+
+  return (
+    <Layout>
+      <div>
+        <h1 css={css`display:inline-block;`}>{site.description}</h1>
+        <h4>{postNodes && postNodes.length} Posts</h4>
+
+      </div>
+    </Layout>
+  )
+}
 
 export default IndexPage

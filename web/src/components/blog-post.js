@@ -54,7 +54,7 @@ function BlogPost(props) {
                 <div>
                   <h3>Categories</h3>
                   <ul>
-                    {categories.map(catogory => (
+                    {categories.map(category => (
                       <li key={category._id}>{category.title}</li>
                     ))}
                   </ul>
