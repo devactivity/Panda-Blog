@@ -1,9 +1,9 @@
 import { format, formatDistance, differenceInDays } from 'date-fns'
 import React from 'react'
 import { buildImageObj } from '../utils/helpers'
-import { imageUrlFor } from '../utils/image-url'
+import { imageUrlForComponent } from '../utils/image-url'
 import BodyArticle from './body-article'
-import RoleList from './RoleList'
+import RoleList from './role-list'
 
 function BlogPost(props) {
   const { _rawBody, writter, categories, title, mainImage, publishedAt } = props
@@ -14,7 +14,7 @@ function BlogPost(props) {
       {mainImage && mainImage.asset && (
         <div>
           <img
-            src={imageUrlFor(buildImageObj(mainImage))
+            src={imageUrlForComponent(buildImageObj(mainImage))
                 .width(1200)
                 .height(675)
                 .fit('crop')

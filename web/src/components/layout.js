@@ -1,10 +1,19 @@
 import React from 'react'
 import { css } from '@emotion/react'
-import { Link} from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import { rhythm } from '../utils/typography'
 
 const Layout = ({ children }) => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        sanityCompany {
+          name
+        }
+      }
+    `
+  )
 
   return (
     <div css={css`
@@ -16,7 +25,7 @@ const Layout = ({ children }) => {
 
       <Link to={'/'}>
         <h3 css={css`margin-bottom: ${rhythm(2)};display:inline-block;font-style:normal;`}>
-          testing
+          {data.sanityCompany.name}
         </h3>
       </Link>
       <Link to={'/about/'} css={css`float:right;`}>

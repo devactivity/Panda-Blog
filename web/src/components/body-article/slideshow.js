@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { css } from '@emotion/react'
 import { buildImageObj } from '../../utils/helpers'
-import { imageUrlFor } from '../../utils/image-url'
+import { imageUrlForComponent } from '../../utils/image-url'
 
 function Slideshow (props) {
   const [index, setIndex] = useState(0)
@@ -83,7 +83,7 @@ function Slideshow (props) {
           `}>
             {slide.asset && (
               <img
-                src={imageUrlFor(buildImageObj(slide))
+                src={imageUrlForComponent(buildImageObj(slide))
                   .width(1200)
                   .height(Math.floor((9 / 16) * 1200))
                   .fit('crop')

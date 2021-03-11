@@ -1,6 +1,6 @@
 import React from 'react'
 import { buildImageObj } from '../utils/helpers'
-import { imageUrlFor } from '../utils/image-url'
+import { imageUrlForComponent } from '../utils/image-url'
 
 function ucfirst(str) {
   return `${str.substr(0, 1).toUpperCase()}${str.substr(1)}`
@@ -17,13 +17,13 @@ function RoleList({ items, title }) {
               <div>
                 {item.person && item.person.image && item.person.image.asset && (
                   <img
-                    src={imageUrlFor(buildImageObj(item.person.image))
+                    src={imageUrlForComponent(buildImageObj(item.person.image))
                         .width(100)
                         .height(100)
                         .fit('crop')
                         .url()
                     }
-                    alt='person image'
+                    alt=''
                   />
                 )}
               </div>

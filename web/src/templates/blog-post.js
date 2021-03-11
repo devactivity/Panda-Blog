@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-// import article page 
+import BlogPost from '../components/blog-post'
 import SEO from '../components/seo'
 import GraphQLErrorList from '../components/GraphQLErrorList'
 import Layout from '../components/layout'
@@ -88,6 +88,7 @@ const BlogPostTemplate = props => {
         )
       }
 
+      {post && <BlogPost {...post} />}
 
     </Layout>
   )
